@@ -1,0 +1,266 @@
+// Hero gradient background
+section:first-child {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+}
+
+// Smooth transitions for all interactive elements
+* {
+  transition: all 0.3s ease;
+}
+
+// Custom hover effects for product cards
+.product-card {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Custom scrollbar styling
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e0 #f7fafc;
+  
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f7fafc;
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #a0aec0;
+    }
+  }
+}
+
+// Animation keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Apply animations to sections
+section {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+// Responsive typography
+@media (max-width: 1024px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+
+  header nav {
+    display: none;
+  }
+  
+  .search-input {
+    width: 200px;
+  }
+
+  .hero-content {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  input[type="text"] {
+    width: 150px;
+  }
+}
+
+// Custom button styles
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e40af);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #3b82f6;
+  color: #3b82f6;
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #3b82f6;
+    color: white;
+    transform: translateY(-2px);
+  }
+}
+
+// Loading animation for images
+img {
+  transition: opacity 0.3s ease;
+  
+  &:not([src]) {
+    opacity: 0;
+  }
+}
+
+// Focus states for accessibility
+button:focus,
+a:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+// Custom grid layouts
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+
+// Sticky header enhancement
+header {
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 50;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
+    z-index: -1;
+  }
+}
+
+// Search input styling
+input[type="text"] {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  
+  &:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Button hover effects
+.hero-button {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+  }
+}
+
+// Animation for content
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-content {
+  animation: fadeInRight 1s ease-out 0.5s both;
+}
+
+// Video autoplay enhancement
+video {
+  &::-webkit-media-controls {
+    display: none !important;
+  }
+  
+  &::-webkit-media-controls-panel {
+    display: none !important;
+  }
+}
