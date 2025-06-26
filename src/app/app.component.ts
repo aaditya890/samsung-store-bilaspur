@@ -38,6 +38,7 @@ interface SocialLink {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
+
 export class AppComponent implements AfterViewInit{
   title = "samsung-clone"
   src: string | null = null
