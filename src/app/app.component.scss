@@ -264,3 +264,30 @@ video {
     display: none !important;
   }
 }
+
+
+
+  /* Custom styles for the massive text effect */
+        .massive-text {
+            font-size: clamp(5rem, 17vw, 24rem);
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+        }
+        
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.3) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Custom gradient background */
+        .footer-gradient {
+            background: linear-gradient(180deg, #050518 0%, #000000 100%);
+        }
+        
+        /* Subtle glow effect */
+        .text-glow {
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        }
