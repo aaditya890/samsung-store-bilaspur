@@ -22,12 +22,14 @@
           </div>
 
           <!-- Right side -->
-          <div class="flex items-center space-x-4">
+          <div class="flex items-center space-x-2">
             <!-- Map Location Button -->
-            <button class="text-white hover:text-blue-200 transition-colors p-2" aria-label="Location">
-              <img src="assets/map.svg" class="h-6 w-6" alt="map-icon">
+            <button class="text-white flex items-center gap-2 p-2" aria-label="Locate us">
+              <img src="assets/map.svg" class="h-5 w-5" alt="map-icon">
+              <span class="text-sm">Locate us</span>
             </button>
           </div>
+
         </div>
       </div>
     </header>
@@ -40,8 +42,9 @@
             Galaxy<br>Unpacked
           </h1>
           <div class="space-y-4 mb-12">
-<p class="text-2xl font-light">
-  <span class="font-light">Samsung Certified Showroom, Bilaspur</span><br></p>
+            <p class="text-2xl font-light">
+              <span class="font-light">Samsung Certified Showroom, Bilaspur</span><br>
+            </p>
             <p class="text-xl text-blue-200">Live on Samsung.com</p>
           </div>
           <button
@@ -74,102 +77,95 @@
   </section>
 
   <!-- Mobile Products Grid -->
-<section class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <!-- Section Header -->
-    <div class="text-center mb-16">
-      <h2 class="text-4xl lg:text-5xl font-light text-gray-900 mb-4">
-        Discover Galaxy Mobile
-      </h2>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Experience the future of mobile technology with our latest Galaxy devices
-      </p>
-    </div>
-
-<!-- Products Grid -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-  <div 
-    *ngFor="let product of mobileProducts; let i = index" 
-    class="cursor-pointer"
-    (mouseenter)="onProductHover(i, true)"
-    (mouseleave)="onProductHover(i, false)"
-  >
-    <!-- Product Card -->
-    <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative overflow-hidden">
-      
-      <!-- Product Image Container -->
-      <div class="relative mb-6 h-48 flex items-center justify-center">
-        <!-- Primary Image -->
-        <img 
-          [src]="product.image" 
-          [alt]="product.name"
-          class="w-full h-full object-contain absolute inset-0 transition-opacity duration-500"
-          [ngClass]="{ 'opacity-0': product.isHovered, 'opacity-100': !product.isHovered }"
-        >
-
-        <!-- Hover Image -->
-        <img 
-          [src]="product.hoverImage" 
-          [alt]="product.name + ' - Alt view'"
-          class="w-full h-full object-contain absolute inset-0 transition-opacity duration-500"
-          [ngClass]="{ 'opacity-100': product.isHovered, 'opacity-0': !product.isHovered }"
-        >
-      </div>
-      
-      <!-- Product Info -->
-      <div class="relative z-10">
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">
-          {{ product.name }}
-        </h3>
-        
-        <p class="text-sm text-gray-600 mb-4">
-          {{ product.description }}
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-4xl lg:text-5xl font-light text-gray-900 mb-4">
+          Discover Galaxy Mobile
+        </h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Experience the future of mobile technology with our latest Galaxy devices
         </p>
-        
-        <!-- Price Info -->
-        <div class="flex items-center justify-between">
-          <div class="text-xl font-bold text-gray-900">
-            <span class="text-sm text-gray-500">Starting at</span><br>
-            ₹{{ product.price | number }}
+      </div>
+
+      <!-- Products Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div *ngFor="let product of mobileProducts; let i = index" class="cursor-pointer" #lazyRef
+          [attr.data-lazy-id]="'product-' + i" (mouseenter)="onProductHover(i, true)"
+          (mouseleave)="onProductHover(i, false)">
+          <!-- Product Card -->
+          <div class="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 relative overflow-hidden">
+
+            <!-- Product Image Container -->
+            <div class="relative mb-6 h-48 flex items-center justify-center">
+              <!-- Primary Image -->
+              <img *ngIf="isVisible('product-' + i)" [attr.src]="product.image" loading="lazy" [alt]="product.name"
+                class="w-full h-full object-contain absolute inset-0 transition-opacity duration-500"
+                [ngClass]="{ 'opacity-0': product.isHovered, 'opacity-100': !product.isHovered }" />
+
+              <!-- Hover Image -->
+              <img *ngIf="product.isHovered" [attr.src]="product.hoverImage" loading="lazy"
+                [alt]="product.name + ' - Alt view'"
+                class="w-full h-full object-contain absolute inset-0 transition-opacity duration-500" />
+            </div>
+
+            <!-- Product Info -->
+            <div class="relative z-10">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                {{ product.name }}
+              </h3>
+
+              <p class="text-sm text-gray-600 mb-4">
+                {{ product.description }}
+              </p>
+
+              <!-- Price Info -->
+              <div class="flex items-center justify-between">
+                <div class="text-xl font-bold text-gray-900">
+                  <span class="text-sm text-gray-500">Starting at</span><br />
+                  ₹{{ product.price | number }}
+                </div>
+              </div>
+
+              <!-- Learn More (static) -->
+              <div class="mt-4">
+                <a href="#" class="text-blue-600 text-sm font-medium flex items-center">
+                  Learn more
+                  <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- Learn More (static) -->
-        <div class="mt-4">
-          <a href="#" class="text-blue-600 text-sm font-medium flex items-center">
-            Learn more
-            <svg class="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </a>
-        </div>
       </div>
+
     </div>
-  </div>
-</div>
-  </div>
-</section>
+  </section>
 
 
-<!-- Galaxy S25 Section -->
-<section class="relative w-full h-screen overflow-hidden">
-  <!-- Full Background Image -->
-  <img src="assets/s-25-sec.jpg" alt="Galaxy S25" class="absolute inset-0 w-full h-full object-cover z-0">
 
-  <!-- Top-Right Text -->
-  <div class="absolute top-10 right-10 text-right z-10">
-    <h2 class="text-4xl md:text-6xl font-light text-white leading-tight">
-      Galaxy S25 | S25+<br>
-      <span class="text-blue-400 font-normal">Galaxy AI ✨</span>
-    </h2>
-  </div>
+  <!-- Galaxy S25 Section -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <!-- Full Background Image -->
+    <img src="assets/s-25-sec.jpg" alt="Galaxy S25" class="absolute inset-0 w-full h-full object-cover z-0">
 
-  <!-- Bottom-Left Buttons -->
-  <div class="absolute bottom-10 left-10 z-10 flex gap-4">
-    <a href="#" class="text-white underline hover:no-underline text-lg">Learn more</a>
-    <a href="#" class="bg-white text-blue-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition">Buy</a>
-  </div>
-</section>
+    <!-- Top-Right Text -->
+    <div class="absolute top-10 right-10 text-right z-10">
+      <h2 class="text-4xl md:text-6xl font-light text-white leading-tight">
+        Galaxy S25 | S25+<br>
+        <span class="text-blue-400 font-normal">Galaxy AI ✨</span>
+      </h2>
+    </div>
+
+    <!-- Bottom-Left Buttons -->
+    <div class="absolute bottom-10 left-10 z-10 flex gap-4">
+      <a href="#" class="text-white underline hover:no-underline text-lg">Learn more</a>
+      <a href="#" class="bg-white text-blue-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition">Buy</a>
+    </div>
+  </section>
 
   <!-- TV Section -->
   <!-- <section class="py-20 bg-white">
@@ -277,17 +273,117 @@
     </div>
   </section> -->
 
- <section class="py-10 text-center">
-    <h1>Heading</h1>
-    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic commodi voluptatibus laborum, minima aliquam dicta illo maxime facilis tempora, laboriosam consectetur. Voluptate beatae saepe temporibus, exercitationem cupiditate enim a consectetur.</p>
- </section>
+
+<!-- Product Categories Section -->
+<section class="py-10 bg-white relative overflow-hidden">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <div class="text-center mb-20">
+      <h2 class="text-5xl lg:text-6xl font-extralight text-gray-900 mb-4 tracking-tight">
+        Galaxy
+        <span class="font-medium">Universe</span>
+      </h2>
+      <!-- <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto mb-2"></div> -->
+      <p class="text-xl text-gray-500 font-light">
+        Choose your perfect companion
+      </p>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-16">
+      <div 
+        *ngFor="let category of productCategories; let i = index" 
+        class="group cursor-pointer"
+        >
+        <!-- Category Card -->
+        <div class="relative shadow-lg bg-white rounded-2xl overflow-hidden transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2"
+            >
+          
+          <!-- Geometric Background Pattern -->
+          <div class="absolute inset-0 opacity-5">
+            <svg class="w-full h-full" viewBox="0 0 100 100" fill="none">
+              <defs>
+                <pattern id="pattern-{{ i }}" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <circle cx="10" cy="10" r="1" fill="currentColor"/>
+                </pattern>
+              </defs>
+              <rect width="100" height="100" [attr.fill]="'url(#pattern-' + i + ')'" />
+            </svg>
+          </div>
+
+          <!-- Model Count Badge -->
+          <div class="absolute top-6 right-6 z-10">
+            <div class="bg-black/10 backdrop-blur-sm text-gray-700 text-sm px-4 py-2 rounded-full font-medium border border-gray-200/50">
+              {{ category.modelCount }}+ Models
+            </div>
+          </div>
+
+          <!-- Content Container -->
+          <div class="relative h-full flex flex-col justify-between p-8">
+            
+            <!-- Category Image -->
+            <div class="flex-1 flex items-center justify-center">
+              <div class="relative">
+                <img 
+                  [src]="category.image" 
+                  [alt]="category.name"
+                  class="w-36 h-36 object-contain"
+                
+                >
+              </div>
+            </div>
+
+            <!-- Category Name -->
+            <div class="text-center mt-6">
+              <h3 class="text-2xl font-light text-gray-900 tracking-wide group-hover:tracking-wider transition-all duration-300"
+                 >
+                {{ category.name }}
+              </h3>
+              
+              <!-- Animated Underline -->
+              <div class="w-0 h-0.5 mx-auto mt-2 transition-all duration-500 group-hover:w-16"
+                   ></div>
+            </div>
+          </div>
+
+          <!-- Hover Border Effect -->
+          <div class="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gray-200 transition-all duration-500"></div>
+          
+          <!-- Corner Accent -->
+          <div class="absolute bottom-0 left-0 w-8 h-8 opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="text-center">
+      <!-- Decorative Elements -->
+      <div class="flex justify-center items-center space-x-4 mb-8">
+        <div class="w-12 h-px bg-gradient-to-r from-transparent to-gray-300"></div>
+        <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+        <div class="w-12 h-px bg-gradient-to-l from-transparent to-gray-300"></div>
+      </div>
+      
+      <!-- CTA Button -->
+      <button class="group relative bg-gray-900 text-white px-12 py-4 rounded-full font-medium overflow-hidden transition-all duration-300 hover:bg-gray-800 hover:scale-105">
+        <span class="relative z-10">Explore All Categories</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute right-4 top-1/2 transform -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<app-test></app-test>
 
   <!-- Mobile-Fixed Footer -->
   <footer class="bg-[#050518] text-white relative overflow-hidden">
-
     <!-- Top Row -->
-    <div
-      class="relative z-10 flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 py-4  text-sm">
+    <div class="relative z-10 flex flex-col sm:flex-row justify-between items-center px-4 sm:px-6 py-4  text-sm">
       <span class="text-white/70">
         Powered by <span class="font-semibold text-white">OctaTech</span>
       </span>
@@ -313,24 +409,12 @@
         </div>
       </div>
 
-      <!-- Main Text - Fixed for Mobile -->
-      <div class="relative z-10 px-2 sm:px-4">
-        <img src="assets/aarvi-footer1.png" class="w-full opacity-85" alt="">
-
-        <!-- Bottom Overlay -->
-        <!-- <div
-          class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent pointer-events-none">
-        </div> -->
+      <div class="relative z-10 px-2 sm:px-4" #footerImage data-lazy-id="footer-img">
+        <img src="assets/aarvi-footer1.png" class="w-full" alt="" loading="lazy" />
       </div>
-
-
       <!-- Bottom fade effect -->
       <div class="absolute bottom-0 left-0 right-0 h-16 sm:h-20 bg-gradient-to-t from-black/30 to-transparent"></div>
     </div>
-
   </footer>
-
-
-
 
 </div>
