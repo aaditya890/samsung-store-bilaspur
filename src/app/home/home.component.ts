@@ -47,26 +47,31 @@ export class HomeComponent  implements AfterViewInit ,OnInit{
 
   visibleMap: { [key: string]: boolean } = {};
 
-  ngAfterViewInit(): void {
-    // Load video after delay
-    setTimeout(() => {
-      this.src = 'assets/bg.mp4';
+ngAfterViewInit(): void {
+  // 🌟 1. Load background video after delay
+  setTimeout(() => {
+    this.src = 'assets/bg.mp4';
+  });
+
+  // 🌟 2. IntersectionObserver with rootMargin for image preload
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute('data-lazy-id');
+      if (entry.isIntersecting && id && !this.visibleMap[id]) {
+        this.visibleMap[id] = true;
+        observer.unobserve(entry.target);
+      }
     });
+  },
+  {
+    rootMargin: '200px 0px', // preload 200px before entering view
+    threshold: 0.01 // very slight intersection needed
+  });
 
-    // common observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.getAttribute('data-lazy-id');
-        if (entry.isIntersecting && id && !this.visibleMap[id]) {
-          this.visibleMap[id] = true;
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
+  // 🌟 3. Observe all lazy image containers
+  this.lazyElements.forEach(el => observer.observe(el.nativeElement));
+}
 
-    // observe product images
-    this.lazyElements.forEach(el => observer.observe(el.nativeElement));
-  }
 
   mobileProducts: EnhancedProduct[] = [
     {

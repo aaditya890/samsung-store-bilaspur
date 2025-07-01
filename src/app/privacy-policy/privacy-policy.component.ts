@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './privacy-policy.component.scss'
 })
 export class PrivacyPolicyComponent {
-  emailText = "sales@aariventures.coms"
+  emailText = "sales@aarviventures.com"
 }

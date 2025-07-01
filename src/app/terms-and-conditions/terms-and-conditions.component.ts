@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './terms-and-conditions.component.scss'
 })
 export class TermsAndConditionsComponent {
-  emailText = "sales@aariventures.com"
+  emailText = "sales@aarviventures.com"
 }

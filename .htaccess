@@ -1,0 +1,13 @@
+# Redirect www to non-www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.aarviventures\.com [NC]
+RewriteRule ^(.*)$ https://aarviventures.com/$1 [L,R=301,NC]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://aarviventures.com/$1 [L,R=301]
+
+# Angular HTML5 Mode Support (SPA routing)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
