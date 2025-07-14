@@ -1,0 +1,96 @@
+// Custom animations and styles
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Image hover effects
+.product-image {
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// Color selection animation
+.color-option {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: scale(1.1);
+  }
+  
+  &.selected {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  }
+}
+
+// Button hover effects
+.action-button {
+  transition: all 0.2s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .thumbnail-grid {
+    justify-content: center;
+  }
+}
+
+// Loading animation
+.loading-spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+// Tab styles
+.tab-content {
+  min-height: 400px;
+}
+
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+// Card hover effects
+.related-product-card {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  }
+}

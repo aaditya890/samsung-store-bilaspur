@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './privacy-policy.component.html',
   styleUrl: './privacy-policy.component.scss'
 })
+
 export class PrivacyPolicyComponent {
   emailText = "sales@aarviventures.com"
 }
