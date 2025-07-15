@@ -1,11 +1,11 @@
 import {
   Component,
-  OnInit,
-  OnDestroy,
-  AfterViewInit,
+ OnInit,
+ OnDestroy,
+ AfterViewInit,
   ViewChildren,
   ElementRef,
-  QueryList,
+ QueryList,
   HostListener,
 } from "@angular/core"
 import { CommonModule } from "@angular/common"
@@ -57,17 +57,29 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   autoSlideInterval: any
   itemsPerSlide = 4 // Default for desktop
 
+  // Product display properties
+  showAllProducts = false
+  initialProductCount = 4 // Show 4 products initially
+
   private productSlugs: ProductSlug[] = [
     { id: "1", slug: "galaxy-s25-ultra" },
     { id: "2", slug: "galaxy-s25" },
     { id: "3", slug: "galaxy-z-fold6" },
     { id: "4", slug: "galaxy-z-flip5" },
+    { id: "5", slug: "galaxy-s24-ultra" },
+    { id: "6", slug: "galaxy-s24" },
+    { id: "7", slug: "galaxy-a55" },
+    { id: "8", slug: "galaxy-a35" },
+    { id: "9", slug: "galaxy-tab-s9" },
+    { id: "10", slug: "galaxy-watch6" },
+    { id: "11", slug: "galaxy-buds2-pro" },
+    { id: "12", slug: "galaxy-book3" },
   ]
 
   @ViewChildren("lazyRef", { read: ElementRef }) lazyElements!: QueryList<ElementRef>
   visibleMap: { [key: string]: boolean } = {}
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {}
 
   ngAfterViewInit(): void {
     // Load background video after delay
@@ -98,52 +110,149 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
     }, 100)
   }
 
-  mobileProducts: EnhancedProduct[] = [
-    {
-      id: "1",
-      name: "Galaxy S25 Ultra",
-      image: "assets/products/s25-1.webp",
-      hoverImage: "assets/products/s25-hover.webp",
-      price: 129999,
-      description: "The ultimate Galaxy experience with S Pen and AI photography",
-      colors: ["#000000", "#A0B0C0", "#808080", "#F0F0F0", "#006644", "#341122", "#D9A6A6"],
-      isHovered: false,
-      isVisible: false,
-    },
-    {
-      id: "2",
-      name: "Galaxy S25",
-      image: "assets/products/s25-simple-1.webp",
-      hoverImage: "assets/products/s25-simple-hover.webp",
-      price: 99999,
-      description: "Premium performance with enhanced camera capabilities",
-      colors: ["#000080", "#DDEEFF", "#98D5C2", "#C0C0C0", "#FFC0CB", "#FF4444", "#1A1A1A"],
-      isHovered: false,
-      isVisible: false,
-    },
-    {
-      id: "3",
-      name: "Galaxy Z Fold6",
-      image: "assets/products/z-fold-6-1.webp",
-      hoverImage: "assets/products/z-fold-6-hover.webp",
-      price: 164999,
-      description: "Unfold your world with the ultimate foldable experience",
-      colors: ["#000000", "#6666FF", "#FFD700"],
-      isHovered: false,
-      isVisible: false,
-    },
-    {
-      id: "4",
-      name: "Galaxy Z Flip5",
-      image: "assets/products/z-flip-5-1.webp",
-      hoverImage: "assets/products/z-flip-5-hover.webp",
-      price: 99999,
-      description: "Take your best selfies, hands-down and hands-free",
-      colors: ["#000000", "#8B5CF6", "#FFD700", "#06B6D4"],
-      isHovered: false,
-      isVisible: false,
-    },
-  ]
+mobileProducts: EnhancedProduct[] = [
+  {
+    id: "1",
+    name: "Galaxy A16",
+    image: "assets/products/a16.webp",
+    hoverImage: "assets/products/a16.webp",
+    price: 12999,
+    description: "Entry‑level smartphone with long‑lasting battery",
+    colors: ["#000000", "#FFFFFF", "#FFD180"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "2",
+    name: "Galaxy A36",
+    image: "assets/products/a36.webp",
+    hoverImage: "assets/products/a36.webp",
+    price: 19999,
+    description: "Affordable Galaxy phone with decent cameras",
+    colors: ["#000000", "#EEEEEE", "#90CAF9"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "3",
+    name: "Galaxy A56",
+    image: "assets/products/a56.webp",
+    hoverImage: "assets/products/a56.webp",
+    price: 24999,
+    description: "Mid‑range smartphone with AMOLED display & good battery",
+    colors: ["#000000", "#FFF8E1", "#A5D6A7"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "4",
+    name: "Galaxy Book5 Pro",
+    image: "assets/products/book-5pro.webp",
+    hoverImage: "assets/products/book-5pro.webp",
+    price: 119999,
+    description: "High-performance Windows laptop with OLED display",
+    colors: ["#444444", "#AAAAAA"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "5",
+    name: "Galaxy Z Flip7",
+    image: "assets/products/flip-7.webp",
+    hoverImage: "assets/products/flip-7.webp",
+    price: 129999,
+    description: "Compact foldable with FlexWindow & enhanced AI cam",
+    colors: ["#1A1A1A", "#345A8F", "#F05A4B", "#A2D2B1"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "6",
+    name: "Galaxy Z Flip7 FE",
+    image: "assets/products/flip-7fe.webp",
+    hoverImage: "assets/products/flip-7fe.webp",
+    price: 79999,
+    description: "Affordable version of Flip7, same FlexWindow",
+    colors: ["#000000", "#FFFFFF"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "7",
+    name: "Galaxy Z Fold7",
+    image: "assets/products/fold-7.webp",
+    hoverImage: "assets/products/fold-7.webp",
+    price: 179999,
+    description: "Ultra-slim 8\" foldable with 200 MP camera & Galaxy AI",
+    colors: ["#1A1A1A", "#345A8F", "#C0C0C0", "#86B799"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "8",
+    name: "Galaxy Tab S10 Ultra",
+    image: "assets/products/s10-ultra.webp",
+    hoverImage: "assets/products/s10-ultra.webp",
+    price: 99999,
+    description: "Flagship tablet with 14.6” AMOLED, S Pen, and dual batteries",
+    colors: ["#000000", "#B0B0B0"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "9",
+    name: "Galaxy S24 FE",
+    image: "assets/products/s24-fe.webp",
+    hoverImage: "assets/products/s24-fe.webp",
+    price: 39999,
+    description: "Fan Edition with solid specs at great value",
+    colors: ["#000000", "#FFFFFF", "#AA00CC", "#00AAFF"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "10",
+    name: "Galaxy S25 Ultra",
+    image: "assets/products/s25.webp",
+    hoverImage: "assets/products/s25-hover.webp",
+    price: 129999,
+    description: "Flagship titanium phone with S Pen & AI camera",
+    colors: ["#333F4E", "#B3C9C2", "#D9C2C2", "#E8E8E8", "#4C4C4C", "#FFC0CB", "#F5F5F5"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "11",
+    name: "Galaxy S25 Edge",
+    image: "assets/products/s25edge.webp",
+    hoverImage: "assets/products/s25edge.webp",
+    price: 109999,
+    description: "Curved‑edge version of S25 with AI enhancements",
+    colors: ["#000000", "#C0C0C0", "#FFE4E1", "#F5F5F5"],
+    isHovered: false,
+    isVisible: false,
+  },
+];
+
+
+
+  // Get products to display based on showAllProducts state
+  get displayedProducts(): EnhancedProduct[] {
+    return this.showAllProducts ? this.mobileProducts : this.mobileProducts.slice(0, this.initialProductCount)
+  }
+
+  // Toggle show all products
+  toggleShowAllProducts(): void {
+    this.showAllProducts = !this.showAllProducts
+
+    // Always scroll to products section for better UX
+    setTimeout(() => {
+      const element = document.getElementById("products-section")
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      }
+    }, 100)
+  }
 
   productCategories: any[] = [
     {
@@ -397,7 +506,6 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   onResize(event: any): void {
     const oldItemsPerSlide = this.itemsPerSlide
     this.updateItemsPerSlide()
-
     // Recalculate current slide position after resize
     if (oldItemsPerSlide !== this.itemsPerSlide) {
       const currentDot = Math.floor(this.currentSlide / oldItemsPerSlide)
