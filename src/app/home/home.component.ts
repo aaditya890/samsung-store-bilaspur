@@ -61,20 +61,19 @@ export class HomeComponent implements AfterViewInit, OnInit, OnDestroy {
   showAllProducts = false
   initialProductCount = 4 // Show 4 products initially
 
-  private productSlugs: ProductSlug[] = [
-    { id: "1", slug: "galaxy-s25-ultra" },
-    { id: "2", slug: "galaxy-s25" },
-    { id: "3", slug: "galaxy-z-fold6" },
-    { id: "4", slug: "galaxy-z-flip5" },
-    { id: "5", slug: "galaxy-s24-ultra" },
-    { id: "6", slug: "galaxy-s24" },
-    { id: "7", slug: "galaxy-a55" },
-    { id: "8", slug: "galaxy-a35" },
-    { id: "9", slug: "galaxy-tab-s9" },
-    { id: "10", slug: "galaxy-watch6" },
-    { id: "11", slug: "galaxy-buds2-pro" },
-    { id: "12", slug: "galaxy-book3" },
-  ]
+ private productSlugs: ProductSlug[] = [
+  { id: "1", slug: "galaxy-a16" },
+  { id: "2", slug: "galaxy-a36" },
+  { id: "3", slug: "galaxy-a56" },
+  { id: "4", slug: "galaxy-book5-pro" },
+  { id: "5", slug: "galaxy-z-flip7" },
+  { id: "6", slug: "galaxy-z-flip7-fe" },
+  { id: "7", slug: "galaxy-z-fold7" },
+  { id: "8", slug: "galaxy-tab-s10-ultra" },
+  { id: "9", slug: "galaxy-s24-fe" },
+  { id: "10", slug: "edge" },
+  { id: "11", slug: "ultra" },
+];
 
   @ViewChildren("lazyRef", { read: ElementRef }) lazyElements!: QueryList<ElementRef>
   visibleMap: { [key: string]: boolean } = {}
@@ -212,23 +211,23 @@ mobileProducts: EnhancedProduct[] = [
   },
   {
     id: "10",
-    name: "Galaxy S25 Ultra",
-    image: "assets/products/s25.webp",
-    hoverImage: "assets/products/s25-hover.webp",
-    price: 129999,
-    description: "Flagship titanium phone with S Pen & AI camera",
-    colors: ["#333F4E", "#B3C9C2", "#D9C2C2", "#E8E8E8", "#4C4C4C", "#FFC0CB", "#F5F5F5"],
-    isHovered: false,
-    isVisible: false,
-  },
-  {
-    id: "11",
     name: "Galaxy S25 Edge",
     image: "assets/products/s25edge.webp",
     hoverImage: "assets/products/s25edge.webp",
     price: 109999,
     description: "Curved‑edge version of S25 with AI enhancements",
     colors: ["#000000", "#C0C0C0", "#FFE4E1", "#F5F5F5"],
+    isHovered: false,
+    isVisible: false,
+  },
+  {
+    id: "11",
+    name: "Galaxy S25 Ultra",
+    image: "assets/products/s25.webp",
+    hoverImage: "assets/products/s25-hover.webp",
+    price: 129999,
+    description: "Flagship titanium phone with S Pen & AI camera",
+    colors: ["#333F4E", "#B3C9C2", "#D9C2C2", "#E8E8E8", "#4C4C4C", "#FFC0CB", "#F5F5F5"],
     isHovered: false,
     isVisible: false,
   },
@@ -452,6 +451,7 @@ mobileProducts: EnhancedProduct[] = [
 
   // Method to handle product navigation
   goToProductDetail(productId: string): void {
+    console.log("Navigating to product detail for ID:", productId)
     const product = this.productSlugs.find((p) => p.id === productId)
     if (product) {
       this.router.navigate(["/product", product.slug])
