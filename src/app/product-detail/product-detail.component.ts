@@ -58,8 +58,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-a16",
       images: [
         "assets/products/a16.webp",
-        "assets/products/a16-2.webp",
-        "assets/products/a16-3.webp"
+        // "assets/products/a16-2.webp",
+        // "assets/products/a16-3.webp"
       ],
       hoverImage: "assets/products/a16-hover.webp",
       description: "Affordable performance with a smooth display and long battery life",
@@ -122,8 +122,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-a36",
       images: [
         "assets/products/a36.webp",
-        "assets/products/a36-2.webp",
-        "assets/products/a36-3.webp"
+        // "assets/products/a36-2.webp",
+        // "assets/products/a36-3.webp"
       ],
       hoverImage: "assets/products/a36-hover.webp",
       description: "Advanced midrange with OIS camera and AMOLED screen",
@@ -187,8 +187,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-a56",
       images: [
         "assets/products/a56.webp",
-        "assets/products/a56-2.webp",
-        "assets/products/a56-3.webp"
+        // "assets/products/a56-2.webp",
+        // "assets/products/a56-3.webp"
       ],
       hoverImage: "assets/products/a56-hover.webp",
       description: "Flagship-like features in a premium midrange body",
@@ -251,8 +251,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-book5-pro",
       images: [
         "assets/products/book-5pro.webp",
-        "assets/products/book5-2.webp",
-        "assets/products/book5-3.webp"
+        // "assets/products/book5-2.webp",
+        // "assets/products/book5-3.webp"
       ],
       hoverImage: "assets/products/book5-hover.webp",
       description: "Ultra-thin laptop with Galaxy ecosystem power",
@@ -312,8 +312,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-z-flip7",
       images: [
         "assets/products/flip-7.webp",
-        "assets/products/flip7-2.webp",
-        "assets/products/flip7-3.webp"
+        // "assets/products/flip7-2.webp",
+        // "assets/products/flip7-3.webp"
       ],
       hoverImage: "assets/products/flip7-hover.webp",
       description: "Flip into the future with compact style and AI innovation",
@@ -378,8 +378,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-z-flip7-fe",
       images: [
         "assets/products/flip-7fe.webp",
-        "assets/products/flip7fe-2.webp",
-        "assets/products/flip7fe-3.webp"
+        // "assets/products/flip7fe-2.webp",
+        // "assets/products/flip7fe-3.webp"
       ],
       hoverImage: "assets/products/flip7fe-hover.webp",
       description: "A foldable experience now in the Fan Edition",
@@ -443,8 +443,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-z-fold7",
       images: [
         "assets/products/fold-7.webp",
-        "assets/products/fold7-2.webp",
-        "assets/products/fold7-3.webp"
+        // "assets/products/fold7-2.webp",
+        // "assets/products/fold7-3.webp"
       ],
       hoverImage: "assets/products/fold7-hover.webp",
       description: "The future unfolds with Galaxy AI and immersive multitasking",
@@ -510,8 +510,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-tab-s10-ultra",
       images: [
         "assets/products/s10-ultra.webp",
-        "assets/products/tab-s10-ultra-2.webp",
-        "assets/products/tab-s10-ultra-3.webp"
+        // "assets/products/tab-s10-ultra-2.webp",
+        // "assets/products/tab-s10-ultra-3.webp"
       ],
       hoverImage: "assets/products/tab-s10-ultra-hover.webp",
       description: "Your ultimate canvas for work, creativity, and entertainment",
@@ -575,8 +575,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "galaxy-s24-fe",
       images: [
         "assets/products/s24-fe.webp",
-        "assets/products/s24fe-2.webp",
-        "assets/products/s24fe-3.webp"
+        // "assets/products/s24fe-2.webp",
+        // "assets/products/s24fe-3.webp"
       ],
       hoverImage: "assets/products/s24fe-hover.webp",
       description: "Flagship essentials with fan-favorite features at a great value",
@@ -641,8 +641,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "edge",
       images: [
         "assets/products/s25edge.webp",
-        "assets/products/s25edge-2.webp",
-        "assets/products/s25edge-3.webp"
+        // "assets/products/s25edge-2.webp",
+        // "assets/products/s25edge-3.webp"
       ],
       hoverImage: "assets/products/s25edge-hover.webp",
       description: "Curved-edge brilliance meets AI-powered performance",
@@ -706,9 +706,9 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       slug: "ultra",
       images: [
         "assets/products/s25.webp",
-        "assets/products/s25-2.webp",
-        "assets/products/s25-3.webp",
-        "assets/products/s25-4.webp"
+        // "assets/products/s25-2.webp",
+        // "assets/products/s25-3.webp",
+        // "assets/products/s25-4.webp"
       ],
       hoverImage: "assets/products/s25-hover.webp",
       description: "The ultimate Galaxy experience with S Pen and AI photography",
